@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCare Medicals | Trusted Pharmacy in Chennai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        :root {
+            --primary: #10b981;
+            --blue: #3b82f6;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(8deg); }
+        }
+        
+        .capsule {
+            animation: capsuleRotate 8s linear infinite;
+        }
+        
+        @keyframes capsuleRotate {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            100% { transform: rotateY(360deg) rotateX(360deg); }
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.03) rotate(1deg);
+            box-shadow: 0 25px 50px -12px rgb(16 185 129 / 0.25);
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #10b981;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .medicine-pill {
+            width: 80px;
+            height: 30px;
+            background: linear-gradient(90deg, #10b981, #34d399);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 font-sans text-zinc-800 overflow-x-hidden">
+    <!-- LOADING INTRO -->
+    <div id="loader" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center">
+        <div class="text-center">
+            <!-- 3D Medical Cross -->
+            <div class="relative mx-auto w-32 h-32 flex items-center justify-center">
+                <div class="absolute w-32 h-32 border-8 border-emerald-500 rounded-2xl rotate-45 flex items-center justify-center capsule" 
+                     style="box-shadow: 0 0 60px -10px rgb(16 185 129);">
+                    <div class="text-6xl text-white font-black drop-shadow-lg">✚</div>
+                </div>
+                <div class="absolute text-emerald-600 text-5xl animate-pulse">💊</div>
+            </div>
+            <h1 class="mt-8 text-3xl font-bold text-emerald-700 tracking-tight">SmartCare Medicals</h1>
+            <p class="text-zinc-500 mt-2 text-sm">Your health, our priority</p>
+            
+            <!-- Loading dots -->
+            <div class="flex justify-center gap-2 mt-10">
+                <div class="w-3 h-3 bg-emerald-500 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
+                <div class="w-3 h-3 bg-emerald-500 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
+                <div class="w-3 h-3 bg-emerald-500 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-emerald-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-inner">✚</div>
+                <div>
+                    <span class="font-bold text-2xl tracking-tighter text-emerald-700">SmartCare</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#services" class="nav-link text-zinc-600 hover:text-emerald-700">Services</a>
+                <a href="#products" class="nav-link text-zinc-600 hover:text-emerald-700">Products</a>
+                <a href="#about" class="nav-link text-zinc-600 hover:text-emerald-700">About</a>
+                <a href="#contact" class="nav-link text-zinc-600 hover:text-emerald-700">Contact</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/919620440091" target="_blank"
+                   class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-3xl text-sm font-semibold shadow-lg shadow-emerald-200">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <button onclick="toggleMobileMenu()" 
+                        class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="hero" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-white px-5 py-2 rounded-3xl shadow text-sm font-medium text-emerald-700">
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    OPEN 24 HOURS • EMERGENCY AVAILABLE
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tighter text-zinc-900">
+                    Your Trusted<br>Neighborhood<br><span class="text-emerald-600">Pharmacy</span>
+                </h1>
+                
+                <p class="text-xl text-zinc-600 max-w-md">
+                    Fast, reliable medicines delivered with care. 
+                    Serving Chennai families since 2018.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="tel:919620440091" 
+                       class="flex-1 md:flex-none bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-5 rounded-3xl text-xl font-semibold flex items-center justify-center gap-3 shadow-xl shadow-emerald-300">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Call Now</span>
+                    </a>
+                    
+                    <a href="#products" 
+                       class="flex-1 md:flex-none border-2 border-emerald-600 hover:bg-emerald-50 text-emerald-700 px-10 py-5 rounded-3xl text-xl font-semibold flex items-center justify-center gap-3">
+                        Shop Now
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 text-sm">
+                    <div>
+                        <div class="flex text-amber-400">★★★★★</div>
+                        <p class="text-zinc-500 text-xs mt-1">4.9 from 1240+ customers</p>
+                    </div>
+                    <div class="h-10 w-px bg-zinc-200"></div>
+                    <div>
+                        <p class="font-semibold">ISO Certified</p>
+                        <p class="text-emerald-600 text-xs">Licensed Pharmacy</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Floating Capsule -->
+            <div class="relative flex justify-center items-center">
+                <div class="relative w-80 h-80 md:w-96 md:h-96">
+                    <!-- Background glow -->
+                    <div class="absolute inset-0 bg-emerald-400/20 rounded-[4rem] blur-3xl"></div>
+                    
+                    <!-- Big Capsule -->
+                    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 medicine-pill text-2xl scale-150 floating" 
+                         style="width: 220px; height: 80px; box-shadow: 0 30px 60px -15px rgb(16 185 129);">
+                        💊
+                    </div>
+                    
+                    <!-- Small floating items -->
+                    <div class="absolute top-12 -right-4 bg-white p-4 rounded-3xl shadow-xl rotate-12 floating" style="animation-delay: 0.8s;">
+                        <div class="text-4xl">🧴</div>
+                    </div>
+                    <div class="absolute bottom-20 -left-8 bg-white p-4 rounded-3xl shadow-xl -rotate-12 floating" style="animation-delay: 1.5s;">
+                        <div class="text-4xl">💉</div>
+                    </div>
+                    
+                    <div class="absolute bottom-10 right-12 glass px-6 py-3 rounded-3xl text-center shadow-2xl">
+                        <p class="text-xs text-emerald-600 font-medium">Next delivery in</p>
+                        <p class="text-3xl font-bold text-zinc-800">18 mins</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trust badges -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-8 text-xs opacity-75">
+            <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Genuine Medicines</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-truck"></i>
+                <span>30 Min Delivery</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-emerald-600 font-medium">OUR SERVICES</span>
+                <h2 class="text-5xl font-bold tracking-tighter mt-3">What We Offer</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Service Card 1 -->
+                <div onclick="showServiceDetail(1)" class="service-card bg-white border border-zinc-100 rounded-3xl p-8 cursor-pointer group">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-active:scale-90">📜</div>
+                    <h3 class="font-semibold text-2xl">Prescription Medicines</h3>
+                    <p class="text-zinc-500 mt-3">Allopathic, Ayurvedic &amp; Homeopathic</p>
+                    <div class="mt-8 text-emerald-600 text-sm font-medium flex items-center gap-2">
+                        Available Now <span class="text-xl">→</span>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div onclick="showServiceDetail(2)" class="service-card bg-white border border-zinc-100 rounded-3xl p-8 cursor-pointer group">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-active:scale-90">💊</div>
+                    <h3 class="font-semibold text-2xl">OTC Medicines</h3>
+                    <p class="text-zinc-500 mt-3">Fever, Cold, Pain relief &amp; more</p>
+                    <div class="mt-8 text-emerald-600 text-sm font-medium flex items-center gap-2">
+                        Shop Instantly <span class="text-xl">→</span>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div onclick="showServiceDetail(3)" class="service-card bg-white border border-zinc-100 rounded-3xl p-8 cursor-pointer group">
+                    <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-active:scale-90">🚀</div>
+                    <h3 class="font-semibold text-2xl">Home Delivery</h3>
+                    <p class="text-zinc-500 mt-3">30-45 mins in Chennai</p>
+                    <div class="mt-8 text-emerald-600 text-sm font-medium flex items-center gap-2">
+                        Order Now <span class="text-xl">→</span>
+                    </div>
+                </div>
+                
+                <!-- More cards -->
+                <div onclick="showServiceDetail(4)" class="service-card bg-white border border-zinc-100 rounded-3xl p-8 cursor-pointer group">
+                    <div class="w-16 h-16 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-active:scale-90">👶</div>
+                    <h3 class="font-semibold text-2xl">Baby Care</h3>
+                    <p class="text-zinc-500 mt-3">Diapers, formula &amp; hygiene</p>
+                </div>
+                
+                <div onclick="showServiceDetail(5)" class="service-card bg-white border border-zinc-100 rounded-3xl p-8 cursor-pointer group">
+                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-active:scale-90">🩹</div>
+                    <h3 class="font-semibold text-2xl">First Aid &amp; Essentials</h3>
+                    <p class="text-zinc-500 mt-3">Bandages, sanitizers &amp; more</p>
+                </div>
+                
+                <div onclick="showServiceDetail(6)" class="service-card bg-white border border-zinc-100 rounded-3xl p-8 cursor-pointer group">
+                    <div class="w-16 h-16 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-active:scale-90">❤️</div>
+                    <h3 class="font-semibold text-2xl">Health Check Kits</h3>
+                    <p class="text-zinc-500 mt-3">BP monitors, oximeters</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20 bg-zinc-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-7">
+                    <span class="uppercase tracking-widest text-emerald-600 text-sm font-medium">Since 2018</span>
+                    <h2 class="text-5xl font-bold tracking-tighter mt-3 leading-none">Caring for Chennai,<br>one prescription at a time.</h2>
+                    <div class="prose mt-8 text-zinc-600">
+                        <p class="text-lg">SmartCare Medicals is your friendly local pharmacy in T-Nagar, Chennai. We stock genuine medicines from leading brands and offer fast home delivery across the city.</p>
+                        <p>We believe healthcare should be accessible, affordable, and trustworthy. Our licensed pharmacists are always available to guide you.</p>
+                    </div>
+                    <div class="flex gap-6 mt-10">
+                        <div>
+                            <div class="text-4xl font-bold text-emerald-600">5000+</div>
+                            <div class="text-sm text-zinc-500">Happy Customers</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-emerald-600">120+</div>
+                            <div class="text-sm text-zinc-500">Brands</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-emerald-600">24×7</div>
+                            <div class="text-sm text-zinc-500">Support</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-5 relative">
+                    <div class="bg-white rounded-3xl p-2 shadow-2xl">
+                        <img src="https://picsum.photos/id/1015/800/600" alt="Pharmacy Interior" 
+                             class="rounded-3xl w-full aspect-video object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white rounded-3xl p-6 shadow-xl max-w-[220px]">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl">👨‍⚕️</div>
+                            <div>
+                                <p class="font-semibold">Mr. Ramesh Kumar</p>
+                                <p class="text-xs text-emerald-600">Chief Pharmacist • 12+ years</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-emerald-600 font-medium">POPULAR PRODUCTS</span>
+                    <h2 class="text-5xl font-bold tracking-tighter">Shop by Category</h2>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-2 text-emerald-600 font-medium">
+                    View all products <span class="text-2xl">→</span>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="group bg-zinc-50 hover:bg-white border border-transparent hover:border-emerald-200 rounded-3xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center text-7xl">💊</div>
+                    <div class="p-6">
+                        <h4 class="font-semibold">Tablets &amp; Capsules</h4>
+                        <p class="text-xs text-zinc-500 mt-1">Paracetamol, Antibiotics &amp; more</p>
+                        <p class="text-emerald-600 font-medium mt-4">From ₹15</p>
+                    </div>
+                </div>
+                
+                <div class="group bg-zinc-50 hover:bg-white border border-transparent hover:border-emerald-200 rounded-3xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center text-7xl">🧪</div>
+                    <div class="p-6">
+                        <h4 class="font-semibold">Syrups &amp; Liquids</h4>
+                        <p class="text-xs text-zinc-500 mt-1">Cough, Digestion, Multivitamins</p>
+                        <p class="text-emerald-600 font-medium mt-4">From ₹45</p>
+                    </div>
+                </div>
+                
+                <div class="group bg-zinc-50 hover:bg-white border border-transparent hover:border-emerald-200 rounded-3xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-rose-100 to-pink-100 flex items-center justify-center text-7xl">🩹</div>
+                    <div class="p-6">
+                        <h4 class="font-semibold">First Aid</h4>
+                        <p class="text-xs text-zinc-500 mt-1">Bandages, Antiseptics, Ointments</p>
+                        <p class="text-emerald-600 font-medium mt-4">From ₹30</p>
+                    </div>
+                </div>
+                
+                <div class="group bg-zinc-50 hover:bg-white border border-transparent hover:border-emerald-200 rounded-3xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-sky-100 to-blue-100 flex items-center justify-center text-7xl">🥑</div>
+                    <div class="p-6">
+                        <h4 class="font-semibold">Vitamins &amp; Supplements</h4>
+                        <p class="text-xs text-zinc-500 mt-1">Immunity boosters</p>
+                        <p class="text-emerald-600 font-medium mt-4">From ₹120</p>
+                    </div>
+                </div>
+                
+                <div class="group bg-zinc-50 hover:bg-white border border-transparent hover:border-emerald-200 rounded-3xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-violet-100 to-purple-100 flex items-center justify-center text-7xl">🧴</div>
+                    <div class="p-6">
+                        <h4 class="font-semibold">Personal Care</h4>
+                        <p class="text-xs text-zinc-500 mt-1">Sanitizers, Masks, Skincare</p>
+                        <p class="text-emerald-600 font-medium mt-4">From ₹25</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="py-20 bg-emerald-700 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold tracking-tighter">Why Families Trust SmartCare</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="mx-auto w-20 h-20 bg-white/10 backdrop-blur-lg rounded-3xl flex items-center justify-center text-5xl mb-6">🧑‍⚕️</div>
+                    <h4 class="font-semibold text-xl">Licensed Pharmacists</h4>
+                    <p class="mt-3 text-emerald-100">Experienced team available round the clock</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-20 h-20 bg-white/10 backdrop-blur-lg rounded-3xl flex items-center justify-center text-5xl mb-6">✅</div>
+                    <h4 class="font-semibold text-xl">100% Genuine</h4>
+                    <p class="mt-3 text-emerald-100">Medicines sourced directly from manufacturers</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-20 h-20 bg-white/10 backdrop-blur-lg rounded-3xl flex items-center justify-center text-5xl mb-6">⚡</div>
+                    <h4 class="font-semibold text-xl">Lightning Fast Delivery</h4>
+                    <p class="mt-3 text-emerald-100">Within 30-45 minutes in Chennai</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-20 h-20 bg-white/10 backdrop-blur-lg rounded-3xl flex items-center justify-center text-5xl mb-6">💰</div>
+                    <h4 class="font-semibold text-xl">Best Prices</h4>
+                    <p class="mt-3 text-emerald-100">Lowest MRP guaranteed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 bg-zinc-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-5xl font-bold tracking-tighter">Get in Touch</h2>
+                    <p class="mt-6 text-lg text-zinc-600">We are here to help you 24×7</p>
+                    
+                    <div class="mt-12 space-y-10">
+                        <div class="flex gap-6">
+                            <i class="fa-solid fa-phone text-4xl text-emerald-500 mt-1"></i>
+                            <div>
+                                <p class="font-medium text-xl">+91 96204 40091</p>
+                                <p class="text-zinc-500">Call or WhatsApp</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-6">
+                            <i class="fa-solid fa-location-dot text-4xl text-emerald-500 mt-1"></i>
+                            <div>
+                                <p class="font-medium">No. 45, Gandhi Street,</p>
+                                <p class="font-medium">T-Nagar, Chennai - 600017</p>
+                                <p class="text-zinc-500 mt-1">Near Panagal Park</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-6">
+                            <i class="fa-solid fa-clock text-4xl text-emerald-500 mt-1"></i>
+                            <div>
+                                <p class="font-medium">Open 24 Hours</p>
+                                <p class="text-emerald-600">Emergency service available</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/919620440091" target="_blank"
+                       class="mt-16 inline-flex items-center gap-4 bg-green-500 hover:bg-green-600 text-white px-8 py-6 rounded-3xl text-xl font-semibold shadow-2xl">
+                        <i class="fa-brands fa-whatsapp text-3xl"></i>
+                        <div>
+                            <div>Chat on WhatsApp</div>
+                            <div class="text-sm opacity-75">Instant response</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Map Placeholder -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl h-full min-h-[420px] relative">
+                    <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1015/800/600')] bg-cover"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end p-8">
+                        <div class="text-white">
+                            <p class="uppercase text-xs tracking-widest">📍 Live Location</p>
+                            <p class="text-2xl font-medium">SmartCare Medicals, T-Nagar</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-6 right-6 bg-white text-emerald-700 px-5 py-2 rounded-3xl text-sm font-medium shadow flex items-center gap-2">
+                        <div class="w-3 h-3 bg-emerald-500 rounded-full animate-ping"></div>
+                        OPEN NOW
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-900 text-zinc-400">
+        <div class="max-w-7xl mx-auto px-6 py-20">
+            <div class="grid md:grid-cols-5 gap-10">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 text-white">
+                        <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl">✚</div>
+                        <span class="font-bold text-3xl tracking-tighter">SmartCare</span>
+                    </div>
+                    <p class="mt-6 max-w-xs text-zinc-500">
+                        Trusted local pharmacy delivering health and happiness to Chennai homes.
+                    </p>
+                    <div class="flex gap-6 mt-8">
+                        <i class="fa-brands fa-facebook text-2xl hover:text-white cursor-pointer"></i>
+                        <i class="fa-brands fa-instagram text-2xl hover:text-white cursor-pointer"></i>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-6">Quick Links</h4>
+                    <div class="space-y-3 text-sm">
+                        <p>Home Delivery</p>
+                        <p>Prescription Upload</p>
+                        <p>Health Blog</p>
+                        <p>Careers</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-6">Services</h4>
+                    <div class="space-y-3 text-sm">
+                        <p>Medicines</p>
+                        <p>OTC Products</p>
+                        <p>Baby Care</p>
+                        <p>Wellness</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-6">Contact</h4>
+                    <div class="space-y-3 text-sm">
+                        <p>+91 96204 40091</p>
+                        <p>info@smartcaremedicals.in</p>
+                        <p>T-Nagar, Chennai</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-zinc-800 mt-20 pt-8 text-xs flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>© 2026 SmartCare Medicals • All Rights Reserved</p>
+                <p class="text-emerald-500">Licensed Drug Store • DL No: TN-2021-45678</p>
+                <p>Made with ❤️ for Chennai</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden fixed inset-0 bg-white z-[999] pt-20 px-6">
+        <div class="flex flex-col gap-8 text-2xl font-medium">
+            <a href="#services" onclick="toggleMobileMenu()" class="py-4 border-b">Services</a>
+            <a href="#products" onclick="toggleMobileMenu()" class="py-4 border-b">Products</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="py-4 border-b">About Us</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="py-4 border-b">Contact</a>
+            
+            <div class="mt-auto pt-10">
+                <a href="https://wa.me/919620440091" target="_blank" 
+                   class="block bg-emerald-600 text-white text-center py-6 rounded-3xl text-xl font-semibold">
+                    Message on WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script already loaded via CDN
+        
+        // Loader
+        window.onload = function() {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.transition = 'opacity 1.2s cubic-bezier(0.65, 0, 0.35, 1)';
+                loader.style.opacity = '0';
+                
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1200);
+            }, 1800);
+        };
+        
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Scroll reveal
+        function handleScroll() {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.85) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', handleScroll);
+        
+        // Fake service detail alert
+        function showServiceDetail(n) {
+            const messages = [
+                "", 
+                "All prescriptions are verified by our licensed pharmacists.",
+                "Hundreds of OTC products available for instant purchase.",
+                "Order before 9 PM for same day delivery.",
+                "Complete range for newborn to toddlers.",
+                "Quality first aid kits and emergency supplies in stock.",
+                "Blood pressure monitors, sugar test kits &amp; more."
+            ];
+            alert(messages[n] + "\n\nCall +91 96204 40091 to know more.");
+        }
+        
+        // Keyboard shortcut for fun
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "/" && document.getElementById('hero')) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+        
+        // Make cards more interactive on touch
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.95)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+        
+        console.log('%c✅ SmartCare Medicals website loaded successfully!', 'color: #10b981; font-family: monospace; font-size: 14px;');
+    </script>
+</body>
+</html>
